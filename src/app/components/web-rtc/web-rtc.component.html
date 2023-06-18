@@ -1,0 +1,15 @@
+<div>
+  <!-- <button mat-raised-button color="primary" (click)="showLocal()" [disabled]="callActive">Local</button>&nbsp;&nbsp; -->
+  <button mat-raised-button color="primary" (click)="showRemote()" [disabled]="callActive">Call</button>&nbsp;&nbsp;
+  <button mat-raised-button color="warn" (click)="hangup()" [disabled]="!callActive">Hang Up</button>
+</div>
+
+<div class="card-container">
+  <div class="card">
+    <video id="local" controls autoplay #local style="height: 440px;width: 640px;"></video>
+  </div>
+
+  <div class="card">
+    <video id="device" controls autoplay #remote style="height: 440px;width: 640px;"> </video>
+  </div>
+</div>

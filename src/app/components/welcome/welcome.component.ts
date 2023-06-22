@@ -18,7 +18,7 @@ export class SafePipe implements PipeTransform {
 })
 export class WelcomeComponent implements OnInit {
   urlSafe: SafeResourceUrl | undefined;
-  qrCodeUrl = "https://meet.jit.si/AndrewPaes";
+  qrCodeUrl = "https://localhost:4200/welcome";
 
   constructor(
     private router: Router,

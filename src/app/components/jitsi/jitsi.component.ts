@@ -267,8 +267,105 @@ export class JitsiComponent implements OnInit {
     // If no participant ID is given, a participant is picked based on the dominant, pinned speaker settings.
     this.api.setLargeVideoParticipant("participantId");
 
+    // Sets the video input device to the one with the passed label or ID.
+    this.api.setVideoInputDevice("deviceLabel", "deviceId");
 
+    // Starts a file recording or streaming session. See the startRecording command for more details.
+    this.api.startRecording("options");
 
+    // Stops an ongoing file recording or streaming session. See the stopRecording command for more details.
+    this.api.stopRecording("mode");
+
+    // Returns the number of conference participants:
+    const numberOfParticipants = this.api.getNumberOfParticipants();
+
+    // Returns a participant's display name:
+    const displayName = this.api.getDisplayName("participantId");
+
+    // Returns a participant's email:
+    const email = this.api.getEmail("participantId");
+
+    // Returns the IFrame HTML element which is used to load the Jitsi Meet conference:
+    const iframe = this.api.getIFrame();
+
+    // Returns a Promise which resolves to the current audio disabled state:
+    this.api.isAudioDisabled().then((disabled: any) => {
+
+    });
+
+    // Returns a Promise which resolves to the current audio muted state:
+    this.api.isAudioMuted().then((muted: any) => {
+
+    });
+
+    // Returns a Promise which resolves to the current video muted state:
+    this.api.isVideoMuted().then((muted: any) => {
+
+    });
+
+    // Returns a Promise which resolves to the current audio availability state:
+    this.api.isAudioAvailable().then((available: any) => {
+
+    });
+
+    // Returns a Promise which resolves to the current video availability state:
+    this.api.isVideoAvailable().then((available: any) => {
+
+    });
+
+    // Returns a Promise which resolves to the current moderation state of the given media type.
+    // mediaType can be either audio (default) or video.
+    this.api.isModerationOn("mediaType").then((isModerationOn: any) => {
+
+    });
+
+    // Returns a Promise which resolves to a Boolean or null, when there is no conference.
+    this.api.isP2pActive().then((isP2p: any) => {
+
+    });
+
+    // Returns a Promise which resolves to the current force mute state of the given participant for the given media type.
+    // mediaType can be either audio (default) or video.
+    // Force muted - moderation is on and participant is not allowed to unmute the given media type.
+    this.api.isParticipantForceMuted("participantId", "mediaType").then((isForceMuted: any) => {
+
+    });
+
+    // Returns a Promise which resolves with the current participants pane state.
+    this.api.isParticipantsPaneOpen().then((state: any) => {
+
+    });
+
+    // Returns a Promise which resolves with whether meeting was started in view only.
+    this.api.isStartSilent().then((startSilent: any) => {
+
+    });
+
+    // Returns a Promise which resolves with the map of breakout rooms.
+    // NOTE: The invitee format in the array depends on the invite service used in the deployment.
+    // PSTN invite objects have the following structure:
+    // {
+    //     type: 'phone',
+    //     number: <string> // the phone number in E.164 format  (ex. +31201234567)
+    // }
+    // SIP invite objects have the following structure:
+    // {
+    //     type: 'sip',
+    //     address: <string> // the sip address
+    // }
+    this.api.listBreakoutRooms().then((breakoutRooms: any) => {
+
+    });
+
+    // Invite the given array of participants to the meeting:
+    this.api.invite([{ "...": "" }, { "...": "" }, { "...": "" }]).then(() => {
+      // success
+    }).catch(() => {
+      // failure
+    });
+
+    // Removes the embedded Jitsi Meet conference:
+    this.api.dispose();
   }
 
   // Commands
